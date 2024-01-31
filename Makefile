@@ -6,13 +6,15 @@
 #    By: naatoyan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/29 20:11:50 by naatoyan          #+#    #+#              #
-#    Updated: 2024/01/29 21:57:36 by naatoyan         ###   ########.fr        #
+#    Updated: 2024/01/30 17:09:50 by naatoyan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = cc
 FLAGS = -Wall -Wextra -Werror
+AR_FLAGS = ar rcs
+RM_F = rm -f
 SRC = ft_isdigit.c ft_memcpy.c ft_split.c ft_strlen.c ft_tolower.c ft_atoi.c \
 	  ft_isprint.c ft_memmove.c ft_strchr.c ft_strmapi.c ft_toupper.c \
 	  ft_bzero.c ft_itoa.c ft_memset.c ft_strdup.c ft_strncmp.c ft_calloc.c \
@@ -38,29 +40,23 @@ WHITE       	= "\033[37m"    # White
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	@echo $(GREEN)
-	ar rcs $(NAME) $(OBJ)
-	@echo $(RESET)
+	@echo $(GREEN) $(AR_FLAGS) $(NAME) $(OBJ) $(RESET)
 
 %.o : %.c
-	@echo $(YELLOW)
-	$(CC) $(FLAGS) -c $< -o $@ 
-	@echo $(RESET)
+	@echo $(YELLOW) $(CC) $(FLAGS) -c $< -o $@ $(RESET)
 
 bonus : $(BOBJ)
-	@echo $(GREEN)
-	ar rcs $(NAME) $(BOBJ)
-	@echo $(RESET)
+	@echo $(GREEN) $(AR_FLAGS) $(NAME) $(BOBJ) $(RESET)
 
 clean :
 	@echo $(RED)
-	rm -f $(OBJ)
-	rm -f $(BOBJ)
+	$(RM_F) $(OBJ)
+	$(RM_F) $(BOBJ) $(RESET)
 	@echo $(RESET)
 
 fclean : clean
 	@echo $(RED)
-	rm -f $(NAME)
+	$(RM_F) $(NAME)
 	@echo $(RESET)
 
 re : fclean all
