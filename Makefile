@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: naatoyan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/29 20:11:50 by naatoyan          #+#    #+#              #
-#    Updated: 2024/01/30 17:09:50 by naatoyan         ###   ########.fr        #
+#    Created: 2024/02/01 19:43:04 by naatoyan          #+#    #+#              #
+#    Updated: 2024/02/01 19:55:34 by naatoyan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,37 +27,23 @@ BON = ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstadd_back.c ft_lstnew.c \
 OBJ = $(SRC:%.c=%.o)
 BOBJ = $(BON:%.c=%.o)
 
-RESET			= "\033[0m"
-BLACK    		= "\033[30m"    # Black
-RED      		= "\033[31m"    # Red
-GREEN    		= "\033[32m"    # Green
-YELLOW   		= "\033[33m"    # Yellow
-BLUE     		= "\033[34m"    # Blue
-MAGENTA  		= "\033[35m"    # Magenta
-CYAN     		= "\033[36m"    # Cyan
-WHITE       	= "\033[37m"    # White
-
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	@echo $(GREEN) $(AR_FLAGS) $(NAME) $(OBJ) $(RESET)
+	$(AR_FLAGS) $(NAME) $(OBJ)
 
 %.o : %.c
-	@echo $(YELLOW) $(CC) $(FLAGS) -c $< -o $@ $(RESET)
+	$(CC) $(FLAGS) -c $< -o $@
 
 bonus : $(BOBJ)
-	@echo $(GREEN) $(AR_FLAGS) $(NAME) $(BOBJ) $(RESET)
+	$(AR_FLAGS) $(NAME) $(BOBJ)
 
 clean :
-	@echo $(RED)
 	$(RM_F) $(OBJ)
 	$(RM_F) $(BOBJ) $(RESET)
-	@echo $(RESET)
 
 fclean : clean
-	@echo $(RED)
 	$(RM_F) $(NAME)
-	@echo $(RESET)
 
 re : fclean all
 

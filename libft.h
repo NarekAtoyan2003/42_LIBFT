@@ -6,7 +6,7 @@
 /*   By: naatoyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 20:03:12 by naatoyan          #+#    #+#             */
-/*   Updated: 2024/01/11 20:22:07 by naatoyan         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:55:05 by naatoyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }			t_list;
-
-typedef struct t_index
-{
-	size_t	i;
-	size_t	j;
-	size_t	k;
-	size_t	alloc_count;
-}			t_indexes;
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);

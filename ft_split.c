@@ -6,7 +6,7 @@
 /*   By: naatoyan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:48:03 by naatoyan          #+#    #+#             */
-/*   Updated: 2024/01/30 16:48:07 by naatoyan         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:05:33 by naatoyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,21 @@ char	*splitr(char **s, char c)
 	return (dest);
 }
 
+int	if_null(char **dest, int i)
+{
+	if (!dest[i])
+	{
+		while (i >= 0)
+		{
+			free(dest[i]);
+			i--;
+		}
+		free(dest);
+		return (1);
+	}
+	return (0);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		i;
@@ -83,6 +98,8 @@ char	**ft_split(char const *s, char c)
 	while (i < w_c)
 	{
 		dest[i] = splitr(&str, c);
+		if (if_null(dest, i))
+			return (00);
 		i++;
 	}
 	dest[i] = 00;
